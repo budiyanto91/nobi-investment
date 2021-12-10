@@ -16,7 +16,7 @@ class TransactionResourceResponse extends JsonResource
         return [
             'nilai_unit' => $this->unit, 
             'nilai_unit_total' => $totalUnit, 
-            'saldo_rupiah_total' => 'Rp '.round($totalSaldo, 2, PHP_ROUND_HALF_DOWN)
+            'saldo_rupiah_total' => 'Rp '.Helper::roundDown($totalSaldo, 2)
         ];
     }
 }
