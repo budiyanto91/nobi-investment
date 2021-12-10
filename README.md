@@ -10,8 +10,7 @@ Aplikasi ini dibangun menggunakan Laravel versi 8
 ```bash
 $ git clone https://github.com/budiyanto91/nobi-investment.git
 ```
-- open nobi-investment dengan vscode
-- open terminal
+- masuk ke direktori nobi-investment melalui terminal
 - jalankan perintah
 
 ```bash
