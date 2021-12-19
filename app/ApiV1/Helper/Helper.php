@@ -29,16 +29,12 @@ class Helper
         return self::roundDown($nab, 4);
     }
 
-    static function roundDown($decimal, $n = 0)
+    static function roundDown($number, $precision = 0)
     {
-        $roundDown = $decimal;
-        $explode = explode('.', strval($decimal));
+        $roundDown = $number;
+        $fig = (int) str_pad('1', $precision + 1, '0');
 
-        if($n > 0 && $explode[0]){
-            $strPad = str_pad(1, $n + 1, 0, STR_PAD_RIGHT);
-            $precision = intval($strPad);
-            $roundDown = floor($decimal * $precision) / $precision;
-        }
+        if($precision > 0) $roundDown = floor($number * $fig) / $fig;
 
         return $roundDown;
     }

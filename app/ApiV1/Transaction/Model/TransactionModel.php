@@ -9,7 +9,7 @@ use App\ApiV1\User\Model\UserBalanceModel;
 class TransactionModel extends Model
 {
     protected $table = 'transactions';
-    protected $fillable = ['user_id', 'type', 'unit'];
+    protected $fillable = ['user_id', 'type', 'unit', 'amount', 'nab'];
 
     public function user()
     {

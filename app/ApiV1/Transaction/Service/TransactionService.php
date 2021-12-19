@@ -19,8 +19,10 @@ class TransactionService
 
         $data = [
             'user_id' => $request->user_id,
+            'amount' => $request->amount_rupiah,
             'type' => 'topup', 
-            'unit' => $this->helper->roundDown($unit, 4)
+            'unit' => $this->helper->roundDown($unit, 4),
+            'nab' => $currentNab
         ];
 
         return $this->transactionRepository->topup($data);
@@ -35,8 +37,10 @@ class TransactionService
 
         $data = [
             'user_id' => $request->user_id,
+            'amount' => -1 * $request->amount_rupiah,
             'type' => 'withdraw', 
-            'unit' => -1 * $this->helper->roundDown($unit, 4)
+            'unit' => -1 * $this->helper->roundDown($unit, 4),
+            'nab' => $currentNab
         ];
 
         return $this->transactionRepository->withdraw($data, $request->amount_rupiah, $userBalanceRupiah);
