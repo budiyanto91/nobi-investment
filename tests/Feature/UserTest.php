@@ -17,7 +17,9 @@ class UserTest extends TestCase
 
     public function test_get_data_member_with_paginator()
     {
-        $this->findByPaginator('api/v1/ib/member');
+        $this->setBaseUrl('api/v1/ib/member');
+
+        $this->findByPaginator();
     }
 
     public function test_add_user_success()

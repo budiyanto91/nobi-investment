@@ -25,7 +25,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function findAll($url = '')
     {
-        $url = $url ? $url : $this->baseUrl;
+        $url = $this->baseUrl ? $this->baseUrl : $url;
 
         $response = $this->getJson(url($url))->assertSuccessful();
 
@@ -34,7 +34,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function findByPaginator($url = '')
     {
-        $url = $url ? $url : $this->baseUrl;
+        $url = $this->baseUrl ? $this->baseUrl : $url;
 
         $response = $this->getJson(url($url))->assertJson(fn ($json) =>
             $json->hasAny('data', 'links', 'meta')
@@ -51,7 +51,7 @@ abstract class TestCase extends BaseTestCase
     protected function create($success = true, $attributes = [], $model = '', $url = '')
     {
 
-        $url = $url ? $url : $this->baseUrl;
+        $url = $this->baseUrl ? $this->baseUrl : $url;
         $model = $this->baseModel ?? $model;
         
         $attributes =  $model::factory()->raw($attributes);
