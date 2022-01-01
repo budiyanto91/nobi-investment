@@ -50,11 +50,8 @@ abstract class TestCase extends BaseTestCase
 
     protected function create($success = true, $attributes = [], $model = '', $url = '')
     {
-
         $url = $this->baseUrl ? $this->baseUrl : $url;
         $model = $this->baseModel ?? $model;
-        
-        $attributes =  $model::factory()->raw($attributes);
         
         $response = $this->postJson(url($url), $attributes);
 

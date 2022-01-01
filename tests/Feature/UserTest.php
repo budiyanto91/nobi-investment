@@ -24,7 +24,9 @@ class UserTest extends TestCase
 
     public function test_add_user_success()
     {
-        $this->create()->assertJson(fn ($json) => $json->has('user_id')->whereType('user_id', 'integer'))->assertSuccessful();
+        $attributes = UserModel::factory()->raw();
+        
+        $this->create(true,  $attributes)->assertJson(fn ($json) => $json->has('user_id')->whereType('user_id', 'integer'))->assertSuccessful();
     }
 
     public function test_add_user_validator_requires()

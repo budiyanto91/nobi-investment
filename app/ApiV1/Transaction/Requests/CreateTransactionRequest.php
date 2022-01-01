@@ -15,7 +15,7 @@ class CreateTransactionRequest extends FormRequest
     {
         return [
             'user_id' => 'required|numeric|exists:users,id',
-            'amount_rupiah' => 'required|numeric'
+            'amount' => 'required|numeric'
         ];
     }
 }

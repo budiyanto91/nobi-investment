@@ -4,7 +4,6 @@ namespace App\ApiV1\Transaction\Repository;
 
 use App\ApiV1\Helper\Helper;
 use Illuminate\Support\Facades\DB;
-use App\ApiV1\Exception\InvalidWithdrawException;
 use App\ApiV1\Transaction\Model\TransactionModel;
 
 class TransactionRepository
@@ -32,10 +31,8 @@ class TransactionRepository
         });
     }
 
-    public function withdraw($data, $amount, $userBalance)
+    public function withdraw($data)
     {
-        if($amount > $userBalance) throw new InvalidWithdrawException();
-
         return DB::transaction(function () use ($data){
             $userWithdraw = $this->transactionModel->create($data);                                                                                                                                                                                                                                                       
 
