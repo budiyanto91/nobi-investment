@@ -24,7 +24,7 @@ class UserTest extends TestCase
 
     public function test_add_user_success()
     {
-        $attributes = UserModel::factory()->raw();
+        $attributes = $this->baseModel::factory()->raw();
         
         $this->create(true,  $attributes)->assertJson(fn ($json) => $json->has('user_id')->whereType('user_id', 'integer'))->assertSuccessful();
     }
@@ -49,8 +49,6 @@ class UserTest extends TestCase
 
         $this->create(false, $attributes)
             ->assertStatus(422)
-            ->assertInvalid([
-                'username' => 'The username has already been taken.'
-            ]);
+            ->assertInvalid(['username' => 'The username has already been taken.']);
     }
 }

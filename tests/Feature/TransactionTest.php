@@ -17,7 +17,7 @@ class TransactionTest extends TestCase
 
     public function test_topup_success()
     {
-        $attributes = TransactionModel::factory()->topup()->raw();
+        $attributes = $this->baseModel::factory()->topup()->raw();
 
         $this->create(true, $attributes)->assertSuccessful();
     }
@@ -28,7 +28,7 @@ class TransactionTest extends TestCase
 
         $this->setBaseUrl('api/v1/ib/withdraw');
 
-        $attributes = TransactionModel::factory()->withdraw()->raw();
+        $attributes = $this->baseModel::factory()->withdraw()->raw();
 
         $this->create(true, $attributes)->assertSuccessful();
     }
@@ -39,7 +39,7 @@ class TransactionTest extends TestCase
 
         $this->setBaseUrl('api/v1/ib/withdraw');
 
-        $attributes = TransactionModel::factory()->withdraw()->raw(['amount' => -6000]);
+        $attributes = $this->baseModel::factory()->withdraw()->raw(['amount' => -6000]);
 
         $this->create(false, $attributes)
             ->assertStatus(400)
